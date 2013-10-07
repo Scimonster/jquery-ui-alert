@@ -56,8 +56,8 @@
             $(this).dialog('close').dialog('destroy').remove()
         };
         if (typeof c === 'function') {
-            o.close = function () {
-                c(r)
+            o.close = function (e) {
+                c(r,e)
             };
         }
         var d = $('<div>' + o.text + '</div>').dialog(o);
@@ -103,8 +103,8 @@
         };
         if (typeof a[arguments.length - 1] === 'function') {
             c = a[arguments.length - 1];
-            o.close = function () {
-                c(r)
+            o.close = function (e) {
+                c(r,e)
             };
         }
         if (typeof a[1] === 'string') {
