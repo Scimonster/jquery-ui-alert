@@ -1,0 +1,122 @@
+<html>
+	<head>
+		<title>jqUI alert testcases</title>
+		<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+		<link href="http://code.jquery.com/ui/1.10.3/themes/ui-lightness/jquery-ui.css" rel="stylesheet" />
+		<script src="jqui-alert.min.js"></script>
+	</head>
+	<body>
+		<p>Here are some simple examples for each of the methods.</p>
+
+		<h3><code>alert</code></h3>
+
+		<p>Basic alert dialog:</p>
+
+		<p><code>
+		jqUI.alert("I'm a jqUI alert dialog!");
+		</code></p>
+
+		<p>Alert dialog with a title:</p>
+
+		<p><code>
+		jqUI.alert({text:"I'm a jqUI alert dialog!",title:"This is a title"});
+		</code></p>
+
+		<p>Basic alert dialog with a callback:</p>
+
+		<p><code>
+		jqUI.alert("I'm a jqUI alert dialog!",function(){console.log("jqUI alert dialog closed")});
+		</code></p>
+
+		<p>Alert dialog with a title and callback:</p>
+
+		<p><code>
+		jqUI.alert({text:"I'm a jqUI alert dialog!",title:"This is a title"},function(){console.log("jqUI alert dialog closed")});
+		</code></p>
+
+		<p>Alert dialog with a title, custom button label, and callback:</p>
+
+		<p><code>
+		jqUI.alert({text:"I'm a jqUI alert dialog!",title:"I'm hungry",buttonLabel:"pizza"},function(){console.log("What kind of answer is pizza?")});
+		</code></p>
+
+		<h3><code>confirm</code></h3>
+
+		<p>Basic confirm dialog with a callback:</p>
+
+		<p><code>
+		jqUI.confirm("I'm a jqUI confirm dialog!",function(yes){console.log("You pressed "+yes?"OK":"Cancel")});
+		</code></p>
+
+		<p>Confirm dialog with a title and callback:</p>
+
+		<p><code>
+		jqUI.confirm({text:"I'm a jqUI confirm dialog!",title:"This is a title"},function(yes){console.log("You pressed "+yes?"OK":"Cancel")});
+		</code></p>
+
+		<p>Confirm dialog with a title, custom button label, and callback:</p>
+
+		<p><code>
+		jqUI.confirm({text:"True or false: jqUI is cool.",title:"This is a title",buttonLabel:["true","false"]},function(true_or_false){console.log("Your answer is "+true_or_false)});
+		</code></p>
+
+		<h3><code>prompt</code></h3>
+
+		<p>Basic prompt dialog with a callback:</p>
+
+		<p><code>
+		jqUI.prompt("Please type your name.",function(name){jqUI.alert("Hello "+name)});
+		</code></p>
+
+		<p>Prompt dialog with a title and callback:</p>
+
+		<p><code>
+		jqUI.prompt({text:"Please type your name.",title:"Have we met before?..."},function(name){jqUI.alert("Hello "+name)});
+		</code></p>
+
+		<p>Prompt dialog with a title, custom button label, and callback:</p>
+
+		<p><code>
+		jqUI.prompt({text:"Please type your name.",title:"Have we met before?...",buttonLabel:["Nice to meet you","I like to keep my personal information private"]},function(name){jqUI.alert("Hello "+name)});
+		</code></p>
+
+		<p>Prompt dialog with a default value and callback:</p>
+
+		<p><code>
+		jqUI.prompt("What's your favorite source-sharing site?","GitHub",function(site){
+		    if (site=="GitHub") jqUI.alert("I like GitHub too.")
+		    else if (site=="SourceForge") jqUI.alert("I'm starting to move away from SourceForge...")
+		    else jqUI.alert("I've never heard of that one.")
+		});
+		</code></p>
+
+		<p>Prompt dialog with a title, default, and callback:</p>
+
+		<p><code>
+		jqUI.prompt({text:"What's your favorite source-sharing site?",title:"Open source FTW!"},"GitHub",function(site){
+		    if (site==null) jqUI.alert("What, you like proprietary?")
+		    else if (site=="GitHub") jqUI.alert("I like GitHub too.")
+		    else if (site=="SourceForge") jqUI.alert("I'm starting to move away from SourceForge...")
+		    else jqUI.alert("I've never heard of that one.")
+		});
+		</code></p>
+
+		<p>The same example above, but set using <code>{value:"default"}</code>:</p>
+
+		<p><code>
+		jqUI.prompt({text:"What's your favorite source-sharing site?",title:"Open source FTW!",value:"GitHub"},function(site){
+		    if (site==null) jqUI.alert("What, you like proprietary?")
+		    else if (site=="GitHub") jqUI.alert("I like GitHub too.")
+		    else if (site=="SourceForge") jqUI.alert("I'm starting to move away from SourceForge...")
+		    else jqUI.alert("I've never heard of that one.")
+		});
+		</code></p>
+
+		<p>Prompt dialog with a default value and no callback (useful for getting a user to copy something) (currently buggy):</p>
+
+		<p><code>
+		jqUI.prompt("Copy this code:","0a6e846b954e345951e710cd6ce3440e"); // MD5 of jquery-2.0.3.min.js
+		</code></p>
+
+		<script>$('p>code').click(function(){eval($(this).text())})</script>
