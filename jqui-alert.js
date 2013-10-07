@@ -72,8 +72,7 @@
     prompt: function () {
         var a = arguments,
             o = a[0],
-            r = null,
-            c;
+            r = null;
         if (typeof o === 'string') {
             o = {
                 text: o
@@ -102,9 +101,8 @@
             $(this).dialog('close').dialog('destroy').remove()
         };
         if (typeof a[arguments.length - 1] === 'function') {
-            c = a[arguments.length - 1];
             o.close = function (e) {
-                c(r,e)
+                a[arguments.length - 1](r,e)
             };
         }
         if (typeof a[1] === 'string') {
