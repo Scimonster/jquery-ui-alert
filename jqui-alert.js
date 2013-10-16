@@ -55,7 +55,7 @@ var jqUI = {
                 $(this).dialog('destroy').remove()
             }
         }).dialog('widget').find('button:last').focus();
-        return d;
+        return {dialog: d, buttons: [{name: o.buttonLabel, click: o.buttons[o.buttonLabel]}], close: o.buttons[o.buttonLabel]};
     },
     confirm: function (o, c) {
         var r = false;
@@ -94,7 +94,7 @@ var jqUI = {
                 $(this).dialog('destroy').remove()
             }
         }).dialog('widget').find('button:last').focus();
-        return d;
+        return {dialog: d, buttons: [{name: o.buttonLabel[0], click: o.buttons[o.buttonLabel[0]]}, {name: o.buttonLabel[1], click: o.buttons[o.buttonLabel[1]]}], close: o.buttons[o.buttonLabel[1]]};
     },
     prompt: function () {
         var a = arguments,
@@ -145,6 +145,10 @@ var jqUI = {
                 $(this).dialog('destroy').remove()
             }
         }).dialog('widget').find('button:last').focus();
-        return d;
+        return {dialog: d, buttons: [{name: o.buttonLabel[0], click: o.buttons[o.buttonLabel[0]]}, {name: o.buttonLabel[1], click: o.buttons[o.buttonLabel[1]]}], close: o.buttons[o.buttonLabel[1]], val: function(newtext){
+        	if (typeof newtext==="string") {d.find('input').val(newtext)}
+        	else if (typeof newtext==="function") {d.find('input').val(newtext(d.find('input').val()))}
+        	else {$.error('Argument to jqUI.prompt().val() not string or function')}
+        }};
     }
 };
