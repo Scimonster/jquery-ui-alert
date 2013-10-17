@@ -43,16 +43,15 @@ var jqUI = {
         }
         o.buttons = {};
         o.buttons[o.buttonLabel] = function () {
-            $(this).dialog('close').dialog('destroy').remove()
+            $(d).dialog('close').dialog('destroy').remove();
         };
         if (typeof c === 'function') {
             o.close = c;
         }
         var d = $('<div>' + o.text + '</div>').dialog(o);
-        d.keypress(function () {
-            var k = e.which;
-            if (k === 32) {
-                $(this).dialog('destroy').remove()
+        d.keypress(function(e){
+            if (e.which === 32) {
+                o.buttons[o.buttonLabel]();
             }
         }).dialog('widget').find('button:last').focus();
         return {dialog: d, buttons: [{name: o.buttonLabel, click: o.buttons[o.buttonLabel]}], close: o.buttons[o.buttonLabel]};
@@ -76,11 +75,11 @@ var jqUI = {
         o.buttons = {};
         o.buttons[o.buttonLabel[0]] = function () {
             r = true;
-            $(this).dialog('close').dialog('destroy').remove()
+            $(d).dialog('close').dialog('destroy').remove();
         };
         o.buttons[o.buttonLabel[1]] = function () {
             r = false;
-            $(this).dialog('close').dialog('destroy').remove()
+            $(d).dialog('close').dialog('destroy').remove();
         };
         if (typeof c === 'function') {
             o.close = function (e) {
@@ -88,10 +87,9 @@ var jqUI = {
             };
         }
         var d = $('<div>' + o.text + '</div>').dialog(o);
-        d.keypress(function () {
-            var k = e.which;
-            if (k === 32) {
-                $(this).dialog('destroy').remove()
+        d.keypress(function(e){
+            if (e.which === 32) {
+                o.buttons[o.buttonLabel[0]]();
             }
         }).dialog('widget').find('button:last').focus();
         return {dialog: d, buttons: [{name: o.buttonLabel[0], click: o.buttons[o.buttonLabel[0]]}, {name: o.buttonLabel[1], click: o.buttons[o.buttonLabel[1]]}], close: o.buttons[o.buttonLabel[1]]};
@@ -101,9 +99,7 @@ var jqUI = {
             o = a[0],
             r = null;
         if (typeof o === 'string') {
-            o = {
-                text: o
-            };
+            o = {text: o};
         }
         if (typeof o === 'object') {
             o = $.extend({
@@ -120,29 +116,27 @@ var jqUI = {
         }
         o.buttons = {};
         o.buttons[o.buttonLabel[0]] = function () {
-            r = $(this).find('input:last').val();
-            $(this).dialog('close').dialog('destroy').remove()
+            r = $(d).find('input:last').val();
+            $(d).dialog('close').dialog('destroy').remove();
         };
         o.buttons[o.buttonLabel[1]] = function () {
-            r = null;
-            $(this).dialog('close').dialog('destroy').remove()
+            $(d).dialog('close').dialog('destroy').remove();
         };
         if (typeof a[arguments.length - 1] === 'function') {
             o.close = function (e) {
-                a[arguments.length - 1](r,e)
+                a[arguments.length - 1](r,e);
             };
         }
         if (typeof a[1] === 'string') {
             o.value = a[1];
         }
         o.create = function () {
-            $(this).find('input:last').select()
+            $(d).find('input:last').select();
         };
         var d = $('<div>' + o.text + '<input type="text" value="' + o.value + '" /></div>').dialog(o);
-        d.keypress(function () {
-            var k = e.which;
-            if (k === 32) {
-                $(this).dialog('destroy').remove()
+        d.keypress(function(e){
+            if (e.which === 32) {
+                $(d).dialog('destroy').remove();
             }
         }).dialog('widget').find('button:last').focus();
         return {dialog: d, buttons: [{name: o.buttonLabel[0], click: o.buttons[o.buttonLabel[0]]}, {name: o.buttonLabel[1], click: o.buttons[o.buttonLabel[1]]}], close: o.buttons[o.buttonLabel[1]], val: function(newtext){
