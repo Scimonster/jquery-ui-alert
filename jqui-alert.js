@@ -128,8 +128,8 @@ var jqUI = {
                 a[a.length - 1](r,e);
             };
         }
-        if (typeof a[1] === 'string') {
-            o.value = a[1];
+        if (typeof a[1] !== 'function') {
+            o.value = a[1].toString();
         }
         o.create = function () {
             $(d).find('input:last').select();
