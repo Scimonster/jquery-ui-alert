@@ -98,6 +98,7 @@ var jqUI = {
         var a = arguments,
             o = a[0],
             r = null;
+        a.length = arguments.length;
         if (typeof o === 'string') {
             o = {text: o};
         }
@@ -122,9 +123,9 @@ var jqUI = {
         o.buttons[o.buttonLabel[1]] = function () {
             $(d).dialog('close').dialog('destroy').remove();
         };
-        if (typeof a[arguments.length - 1] === 'function') {
+        if (typeof a[a.length - 1] === 'function') {
             o.close = function (e) {
-                a[arguments.length - 1](r,e);
+                a[a.length - 1](r,e);
             };
         }
         if (typeof a[1] === 'string') {
