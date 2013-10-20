@@ -48,7 +48,7 @@ var jqUI = {
         if (typeof c === 'function') {
             o.close = c;
         }
-        var d = $('<div>' + o.text + '</div>').dialog(o);
+        var d = $('<div' + (o.id?' id="'+o.id+'"':'') + '>' + o.text + '</div>').dialog(o);
         d.keypress(function(e){
             if (e.which === 32) {
                 o.buttons[o.buttonLabel]();
@@ -86,7 +86,7 @@ var jqUI = {
                 c(r,e)
             };
         }
-        var d = $('<div>' + o.text + '</div>').dialog(o);
+        var d = $('<div' + (o.id?' id="'+o.id+'"':'') + '>' + o.text + '</div>').dialog(o);
         d.keypress(function(e){
             if (e.which === 32) {
                 o.buttons[o.buttonLabel[0]]();
@@ -134,7 +134,7 @@ var jqUI = {
         o.create = function () {
             $(d).find('input:last').select();
         };
-        var d = $('<div>' + o.text + '<input type="text" value="' + o.value + '" /></div>').dialog(o);
+        var d = $('<div' + (o.id?' id="'+o.id+'"':'') + '>' + o.text + '<input type="text" value="' + o.value + '" /></div>').dialog(o);
         d.keypress(function(e){
             if (e.which === 32) {
                 $(d).dialog('destroy').remove();
