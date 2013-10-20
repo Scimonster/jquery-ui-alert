@@ -36,11 +36,13 @@ var jqUI = {
             o = $.extend({
                 title: 'Alert Message',
                 buttonLabel: 'OK',
-                modal: true
+                modal: true,
+                dialogClass: ''
             }, o);
         } else {
             $.error('First argument to jqUI.alert not string or object');
         }
+        o.dialogClass += ' jqui-alert';
         o.buttons = {};
         o.buttons[o.buttonLabel] = function () {
             $(d).dialog('close').dialog('destroy').remove();
@@ -67,11 +69,13 @@ var jqUI = {
             o = $.extend({
                 title: 'Confirm',
                 buttonLabel: ['OK', 'Cancel'],
-                modal: true
+                modal: true,
+                dialogClass: ''
             }, o);
         } else {
             $.error('First argument to jqUI.confirm not string or object');
         }
+        o.dialogClass += ' jqui-confirm';
         o.buttons = {};
         o.buttons[o.buttonLabel[0]] = function () {
             r = true;
@@ -107,7 +111,8 @@ var jqUI = {
                 title: 'Prompt',
                 buttonLabel: ['OK', 'Cancel'],
                 modal: true,
-                value: ''
+                value: '',
+                dialogClass: ''
             }, o);
             if (typeof o.buttonLabel === 'string') {
                 o.buttonLabel = [o.buttonLabel, 'Cancel'];
@@ -115,6 +120,7 @@ var jqUI = {
         } else {
             $.error('First argument to jqUI.prompt not string or object');
         }
+        o.dialogClass += ' jqui-prompt';
         o.buttons = {};
         o.buttons[o.buttonLabel[0]] = function () {
             r = $(d).find('input:last').val();
@@ -134,7 +140,7 @@ var jqUI = {
         o.create = function () {
             $(d).find('input:last').select();
         };
-        var d = $('<div' + (o.id?' id="'+o.id+'"':'') + '>' + o.text + '<input type="text" value="' + o.value + '" /></div>').dialog(o);
+        var d = $('<div' + (o.id?' id="'+o.id+'"':'') + '>' + o.text + '<input type="text" value="' + o.value + '" width="100%" /></div>').dialog(o);
         d.keypress(function(e){
             if (e.which === 32) {
                 $(d).dialog('destroy').remove();
