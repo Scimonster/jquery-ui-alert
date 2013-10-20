@@ -128,7 +128,7 @@ var jqUI = {
                 a[a.length - 1](r,e);
             };
         }
-        if (typeof a[1] !== 'function') {
+        if (a[1] && typeof a[1] !== 'function') {
             o.value = a[1].toString();
         }
         o.create = function () {
