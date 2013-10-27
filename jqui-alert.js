@@ -140,7 +140,7 @@ var jqUI = {
         o.create = function () {
             $(d).find('input:last').select();
         };
-        var d = $('<div' + (o.id?' id="'+o.id+'"':'') + '>' + o.text + '<input type="text" value="' + o.value + '" width="100%" /></div>').dialog(o);
+        var d = $('<div' + (o.id?' id="'+o.id+'"':'') + '>' + o.text + '<input type="text" value="' + o.value + '" style="width:100%" /></div>').dialog(o);
         d.keypress(function(e){
             if (e.which === 32) {
                 $(d).dialog('destroy').remove();
