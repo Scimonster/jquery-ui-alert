@@ -52,7 +52,7 @@ var jqUI = {
         }
         var d = $('<div' + (o.id?' id="'+o.id+'"':'') + '>' + o.text + '</div>').dialog(o);
         d.keypress(function(e){
-            if (e.which === 32) {
+            if (e.which === 10) {
                 o.buttons[o.buttonLabel]();
             }
         }).dialog('widget').find('button:last').focus();
@@ -92,7 +92,7 @@ var jqUI = {
         }
         var d = $('<div' + (o.id?' id="'+o.id+'"':'') + '>' + o.text + '</div>').dialog(o);
         d.keypress(function(e){
-            if (e.which === 32) {
+            if (e.which === 10) {
                 o.buttons[o.buttonLabel[0]]();
             }
         }).dialog('widget').find('button:last').focus();
@@ -142,7 +142,7 @@ var jqUI = {
         };
         var d = $('<div' + (o.id?' id="'+o.id+'"':'') + '>' + o.text + '<input type="text" value="' + o.value + '" style="width:100%" /></div>').dialog(o);
         d.keypress(function(e){
-            if (e.which === 32) {
+            if (e.which === 10) {
                 $(d).dialog('destroy').remove();
             }
         }).dialog('widget').find('button:last').focus();
